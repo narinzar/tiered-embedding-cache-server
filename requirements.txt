@@ -1,0 +1,13 @@
+fastapi
+uvicorn
+numpy
+tqdm
+matplotlib
+pytest
+python-dotenv
+httpx
+
+# This project is CPU-only and needs no torch. If you later swap embedder.py
+# for a real model (e.g. sentence-transformers on GPU), install torch from the
+# CUDA 12.8 index for an RTX 5090 (sm_120):
+#   pip install torch --index-url https://download.pytorch.org/whl/cu128
