@@ -31,6 +31,10 @@ HOT_CAPACITY = int(os.getenv("HOT_CAPACITY", "256"))
 CACHE_DIR = os.getenv("CACHE_DIR", os.path.join("data", "cold_tier"))
 
 
+class WarmRequest(BaseModel):
+    keys: list[str]
+
+
 def create_app(
     hot_capacity: int = HOT_CAPACITY,
     cache_dir: str = CACHE_DIR,
@@ -64,9 +68,6 @@ def create_app(
                 return existing
             cache.put(key, vec)
         return vec
-
-    class WarmRequest(BaseModel):
-        keys: list[str]
 
     @app.get("/healthz")
     async def healthz():
